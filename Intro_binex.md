@@ -1,4 +1,6 @@
-Binary exploitation  -> Analyzing and manipulating a binary in order to make it do what you want, often this ends in RCE(remote code execution)
+#Binary exploitation  
+
+-> Analyzing and manipulating a binary in order to make it do what you want, often this ends in RCE(remote code execution)
 
 EXE Protections
   - Canary
