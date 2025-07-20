@@ -1,8 +1,8 @@
 # CWE
 
-This repositiry is designed to help and keep records of practice material and problems to practice for the CWE screener and interview process
+This repository is designed to help and keep records of practice material and problems to practice for the CWE screener and interview process
 
-#Sections
+Sections
   - C programming
   - Reverse Engineering
   - Binary Exploitation
