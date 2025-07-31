@@ -27,4 +27,4 @@ Tools
  - Cyclic -> Help find buffer offsets
 
 TIP:
-  -When there is a problem with a movabs instruction, there may be a stack alignment issue (add a ret gadget)
+   When there is a problem with a movabs instruction, there may be a stack alignment issue (add a ret gadget)
