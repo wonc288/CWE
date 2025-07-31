@@ -11,7 +11,7 @@ The procedure linkage table is a mechanism used in the ELF format and includes i
 
 
 Lazily Linked :
-
+```
 [Your Code]
    |
    | calls
@@ -34,11 +34,11 @@ puts@got (initially points to resolver stub)
    |                                                             |
    | puts@plt → puts@got → libc puts() (no more resolving)       |
    |-------------------------------------------------------------|
-
+```
 
 
 Eager binding:
-
+```
 [Binary is loaded]
    |
    |------------------------- Startup ---------------------------|
@@ -57,6 +57,6 @@ puts@plt
    v
 puts@got → libc puts()
 
-
+```
 
 
