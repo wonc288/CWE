@@ -18,33 +18,45 @@ Lazily Linked :
    v
 puts@plt (in binary)
    |
-   | indirect jmp → GOT entry (puts@got)
+   | indirect jump →
+   v
+puts@got (initially points to resolver stub)
    |
-   | first time: GOT holds address of resolver stub → _dl_runtime_resolve
-   |-------------------------------------------------------------|
-   |                       Dynamic Linker                        |
-   | Resolves real libc address of puts()                        |
-   | Updates GOT: puts@got ← real address of puts in libc        |
+   |------------------------- First Call -------------------------|
+   |                                                             |
+   | puts@got → _dl_runtime_resolve (dynamic linker stub)        |
+   |                                                             |
+   | Dynamic Linker resolves actual libc address of puts()       |
+   | Updates GOT: puts@got ← libc puts address                   |
    |-------------------------------------------------------------|
    |
-   |→ Subsequent calls use puts@got directly (no more resolving)
+   |--------------------- Subsequent Calls ----------------------|
+   |                                                             |
+   | puts@plt → puts@got → libc puts() (no more resolving)       |
+   |-------------------------------------------------------------|
+
 
 
 Eager binding:
 
-[Program Start]
+[Binary is loaded]
    |
-   |-- Dynamic linker resolves all needed symbols
-   |-- Writes real addresses into GOT (e.g., puts@got ← libc puts)
-   |-- Marks GOT read-only
+   |------------------------- Startup ---------------------------|
+   |                                                             |
+   | Dynamic Linker immediately resolves all symbols             |
+   | GOT: puts@got ← libc puts address                           |
+   |                                                             |
+   | Marks GOT read-only via mprotect                           |
+   |-------------------------------------------------------------|
    |
-[Your Code]
-   |
+   | calls
    v
 puts@plt
    |
+   | indirect jump →
    v
-puts@got → libc puts()    ← already resolved at startup!
+puts@got → libc puts()
+
 
 
 
