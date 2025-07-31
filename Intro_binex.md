@@ -25,3 +25,6 @@ Tools
  - Pwntools -> Script writing aid
  - One_Gadget -> Find shell in libc
  - Cyclic -> Help find buffer offsets
+
+TIP:
+  -When there is a problem with a movabs instruction, there may be a stack alignment issue (add a ret gadget)
