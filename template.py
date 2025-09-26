@@ -4,8 +4,8 @@ from pwn import *
 
 binary_path = './' # exe
 libc_path = ''
-remote_host = ''
-remote_port = 0  # <-- Needs to be a valid integer if using REMOTE
+remote_host = 'www.cweaccessionsctf.com'
+remote_port = 1300  # <-- Needs to be a valid integer if using REMOTE
 
 context.binary = binary_path
 #context.terminal = ['tmux', 'splitw', '-h']
