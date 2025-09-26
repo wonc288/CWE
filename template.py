@@ -12,7 +12,7 @@ context.binary = binary_path
 elf = context.binary
 #libc = ELF(libc_path)
 rop = ROP(elf)
-libc = ELF(libc_path)
+#libc = ELF(libc_path)
 
 if args.GDB:
     p = gdb.debug(binary_path, gdbscript='b *')
