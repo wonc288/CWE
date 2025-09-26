@@ -10,3 +10,5 @@ Sections
   - Community layout
 
 All sections will contain some basic knowledge to give context, some problems, and solutions to those problems
+
+https://www.cweaccessionsctf.com/
