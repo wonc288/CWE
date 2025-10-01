@@ -1,7 +1,7 @@
 The first thing I do to this file s to run the file and checksec commands to see what basic protection it has.  it is in 32 bit with  PIE disabled but it has NX. It also says it has no stack canary so the canary must be added at the runtime of the program.
 
 I then run it in ghidra
-```
+```C
   local_14 = popen("date +%s","r");
   if (local_14 == (FILE *)0x0) {
     puts("Failed to run command");
@@ -14,7 +14,7 @@ I then run it in ghidra
 ```
 I can see from this snippet of code that it opens a file and get the UNIX timestamp, it then stores it and then turns it into a long and sets global equal to it. It then runs the readin() function with global as its parameter.
 
-```
+```C
 void read_in(int param_1)
 
 {
