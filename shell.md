@@ -2,7 +2,9 @@
 This write up is for the challenge shell
 
 The first thing I did was to first run file and checksec to see the basic protections that the binary had. I saw that it there was no NX meaning that we could inject our own shellcode.
+```
 
+```
 After running the binary one can see that it prints out the location of the start of the buffer, if there is a buffer overflow we have a clear shellcode injection.
 
 I opened it up in ghidra and I saw
@@ -68,5 +70,5 @@ This then pops a shell and we can cat the flag
 
 CWE{popping_shells_is_neat_HRhzM3AR}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc4NTg5MjYwXX0=
+eyJoaXN0b3J5IjpbOTg5MDA2NjQwLDc3ODU4OTI2MF19
 -->
