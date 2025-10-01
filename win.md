@@ -2,7 +2,16 @@
 This write up is for the win pwn challenge.
 
 The first thing I am going to do is to run both file and checksec to see the basic information and protections on the binary.
+```
+*] '/home/kali/Downloads/CWE2025/real/win'
+    Arch:       i386-32-little
+    RELRO:      Partial RELRO
+    Stack:      No canary found
+    NX:         NX enabled
+    PIE:        No PIE (0x8048000)
+    Stripped:   No
 
+```
 After putting into ghidra I  can see that the program reads my input into a buffer without checking the size. This immediately led to a buffer overflow to a win function.
 
 I used cyclic in pwndbg to find my offset of 52
@@ -51,5 +60,5 @@ if __name__ == '__main__':
 CWE{no_stack_smashing_here_Nl8VyJ4C}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjIwMTQwMDFdfQ==
+eyJoaXN0b3J5IjpbMTgxNzk5OTc1OSwtMTEyMjAxNDAwMV19
 -->
