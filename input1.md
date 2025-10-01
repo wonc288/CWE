@@ -43,7 +43,7 @@ uint check(uint param_1)
 }
 ```
 
-It looks like it just takes the parameter which in this case is the user input and does an xor, bithshift, then another xor. Ok cool, now all I have to do is use the checked value and reverse this process to find the input the program expects.
+It looks like it just takes the parameter which in this case is the user input and does an xor, bitshift, then another xor. Ok cool, now all I have to do is use the checked value and reverse this process to find the input the program expects.
 
 ```python
 result = (0xb88202 ^ 0x6f0) << 4 ^ 0x735
