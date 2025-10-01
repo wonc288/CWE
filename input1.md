@@ -32,6 +32,8 @@ undefined8 main(void)
 }
 ```
 
+Looking this main function I can see that it prints, prompting for input. It then collects input and is sent to the check function. The returned value of that function is then saved and compared to a value. If we pass that check we can get to our flag.
+
 ```C
 
 uint check(uint param_1)
@@ -41,6 +43,18 @@ uint check(uint param_1)
 }
 ```
 
+It looks like it just takes the parameter which in this case is the user input and does an xor, bithshift, then another xor. Ok cool, now all I have to do is use the checked value and reverse this process to find the input the program expects.
+
+```python
+result = (0xb88202 ^ 0x6f0) << 4 ^ 0x735
+
+print(result)
+```
+
+This prints out the result 193480725
+
+I then just use a simple script to send this payload to the program and print the flag
+```python
 #!/usr/bin/env python3 
 import subprocess
 from pwn import *
@@ -74,7 +88,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+```
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbOTUyMjc5ODUyLC0xMDM4MDc1Mjk4XX0=
 -->
