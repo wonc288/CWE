@@ -3,6 +3,15 @@ This write up is for the challenge shell
 
 The first thing I did was to first run file and checksec to see the basic protections that the binary had. I saw that it there was no NX meaning that we could inject our own shellcode.
 ```
+[*] '/home/kali/Downloads/CWE2025/real/shell'
+    Arch:       i386-32-little
+    RELRO:      Partial RELRO
+    Stack:      No canary found
+    NX:         NX unknown - GNU_STACK missing
+    PIE:        No PIE (0x8048000)
+    Stack:      Executable
+    RWX:        Has RWX segments
+    Stripped:   No
 
 ```
 After running the binary one can see that it prints out the location of the start of the buffer, if there is a buffer overflow we have a clear shellcode injection.
@@ -70,5 +79,5 @@ This then pops a shell and we can cat the flag
 
 CWE{popping_shells_is_neat_HRhzM3AR}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg5MDA2NjQwLDc3ODU4OTI2MF19
+eyJoaXN0b3J5IjpbLTQyMzQzNzgwMiw3Nzg1ODkyNjBdfQ==
 -->
