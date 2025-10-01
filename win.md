@@ -12,7 +12,7 @@ The first thing I am going to do is to run both file and checksec to see the bas
     Stripped:   No
 
 ```
-After putting into ghidra I  can see that the program reads my input into a buffer without checking the size. This immediately led to a buffer overflow to a win function.
+After putting into ghidra I  can see that the program reads my input into a buffer without checking the size. This immediately led to a buffer overflow to a win function. Because there is no PIE I can just use the address of win found in ghidra.
 
 I used cyclic in pwndbg to find my offset of 52
 I then created my python script to solve 
