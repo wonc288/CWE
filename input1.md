@@ -1,6 +1,6 @@
 This mark down is the solution to input1
 
-The first thing I did was to open this up in ghidra to look at how 
+The first thing I did was to open this up in ghidra to look at how the program processes input
 
 ```C
 undefined8 main(void)
