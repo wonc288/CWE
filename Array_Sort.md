@@ -67,4 +67,5 @@ CWE{pFivB93uGUUuEViQBhaPHWEu79b}
 
 ### References
 -https://docs.python.org/2/library/struct.html
+
 -https://www.geeksforgeeks.org/python/struct-module-python/
