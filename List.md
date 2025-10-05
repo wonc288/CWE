@@ -65,3 +65,6 @@ if __name__ == "__main__":
 After running it printed the flag.
 
 CWE{RD4GN8zjNaRRP7TwdufPNBx4gG0}
+
+### References
+- https://www.w3schools.com/python/ref_list_sort.asp
