@@ -33,7 +33,7 @@ Next I  check if the scene exists and then iterate throught eh scene tabel to fi
     Scene *current_scene = (Scene *)(scene_table + target_act->first_scene_offset);
     
     // Find the requested scene by iterating through scenes in this act
-    for (uint32_t i = 1; i < scene; i++) {
+    for (uint32_t i = 0; i < scene; i++) {
         // Move to the next scene using the size field
         current_scene = (Scene *)((uint8_t *)current_scene + current_scene->size);
     }
@@ -59,8 +59,8 @@ I then check if the line exists and then find the line and return it
 }
 ```
 
-I was able to complete this basic implementation but when I ran the program it would print only random numbers, I then ran it through chatgpt to debug and got this
-
+I was able to complete this basic implementation but when I ran the program it would print only random numbers, I then ran it through ChatGPT to debug and got this
+I was checking for the scene based on its position instead of the value which would allow me to grab a scene if they are not in order or if a scene is missing, the same issue occured with the line.
 ```C
 #include "play.h"
 
