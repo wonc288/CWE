@@ -7,7 +7,7 @@ Each linked list node takes the following form:
 
 | Flink | Value |Length | Flag Piece... |
 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | ......... |
-```
+
 
 - Flink: The pointer to the next node in the list. The flink is given as an offset from the beginning of the binary file.
 - Value: The value which should be used to sort the linked list.
@@ -62,3 +62,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+After running it printed the flag.
+
+CWE{RD4GN8zjNaRRP7TwdufPNBx4gG0}
