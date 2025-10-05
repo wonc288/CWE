@@ -124,3 +124,8 @@ int main(void) {
 After running the code I was able to print the flag
 
 CWE{Z;/ER6M3t~;4_6'`lSC,9%%Cx24jQ*~]L~,r\I1N72+mQ*z=+lox}
+
+### References
+
+- https://www.geeksforgeeks.org/c/c-program-to-implement-avl-tree/
+- OpenAI. (2025). ChatGPT (GPT-5). https://chat.openai.com/
