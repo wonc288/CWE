@@ -194,6 +194,6 @@ if __name__ == "__main__":
 Output = GiO==m79wcw55B==
 
 CWE{Op3n_7he_p0d_B@y_d0Or_NXXaSf5v}
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMDUxOTQ1MV19
--->
+
+ ### References
+ - https://www.lifewire.com/base64-encoding-overview-1166412
