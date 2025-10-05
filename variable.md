@@ -101,5 +101,8 @@ Welcome AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x01, what kind of math 
 ```
 
 I was able to get that menu option! Now I can just hit 7 to print my flag
-
+```
+> $ 7
 CWE{you_dont_always_need_eip_E7pyjtjK}
+```
+
