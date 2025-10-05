@@ -136,3 +136,6 @@ char *get_line(Play *play, int act, int scene, int line_number)
 After running this I was able to get the flag to print
 
 CWE{brevity_is_the_soul_of_wit_ZrhFoEJx}
+
+### References
+- OpenAI. (2025). ChatGPT (GPT-5). https://chat.openai.com/
