@@ -12,7 +12,7 @@
 Node* ReverseList(Node* head) {
   struct Node* next;
   struct Node* cur = head;
-  struct Node* prev = head;
+  struct Node* prev = NULL;
 
   while(cur != NULL) {
     next = cur->next;
